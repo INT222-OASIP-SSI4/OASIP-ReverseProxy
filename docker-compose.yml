@@ -5,7 +5,7 @@ services:
         image: database-img
         container_name: databaseserver
         build:
-            context: ./OASIP-Database
+            context: ../OASIP-Database
         ports:
             - 3306:3306
         restart: on-failure
@@ -14,7 +14,7 @@ services:
         image: backend-img
         container_name: backendserver
         build:
-            context: ./OASIP-BackEnd
+            context: ../OASIP-BackEnd
         depends_on:
             - databaseserver
         links:
@@ -27,7 +27,7 @@ services:
         image: frontend-img
         container_name: frontendserver
         build:
-            context: ./OASIP-FrontEnd
+            context: ../OASIP-FrontEnd
         depends_on:
             - databaseserver
             - backendserver
