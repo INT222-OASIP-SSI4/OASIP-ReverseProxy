@@ -4,7 +4,7 @@ services:
         image: database-img
         container_name: databaseserver
         build:
-            context: ./database/
+            context: ../OASIP-Database
         ports:
             - 3306:3306
 
@@ -12,7 +12,7 @@ services:
         image: backend-img
         container_name: backendserver
         build:
-            context: ./Back-End/OASIP-BACKEND
+            context: ../OASIP-BACKEND
         depends_on:
             - databaseserver
         links:
@@ -24,7 +24,7 @@ services:
         image: frontend-img
         container_name: frontendserver
         build:
-            context: ./Front-End
+            context: ../OASIP-FrontEnd
         depends_on:
             - databaseserver
             - backendserver
@@ -39,6 +39,6 @@ services:
             - backendserver
             - frontendserver
         volumes:
-            - ./reverse_proxy/nginx.conf:/etc/nginx/nginx.conf
+            - ./nginx.conf:/etc/nginx/nginx.conf
         ports:
             - 80:80
