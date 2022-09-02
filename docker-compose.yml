@@ -12,7 +12,7 @@ services:
         image: backend-img
         container_name: backendserver
         build:
-            context: ../OASIP-BACKEND
+            context: ../OASIP-BackEnd
         depends_on:
             - databaseserver
         links:
